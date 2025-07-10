@@ -1,5 +1,23 @@
-*.pyc
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*env
-db.sqlite3
+*.py[cod]
+
+# Virtual env
+env/
+venv/
+myenv/
+*env/
+
+# dotenv
 .env
+
+# DBs (optional local SQLite)
+*.sqlite3
+
+# Static + media (if built automatically)
+staticfiles/
+media/
+
+# OS or editor junk
+.DS_Store
+*.swp
