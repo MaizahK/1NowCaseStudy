@@ -138,7 +138,7 @@ pip install -r requirements.txt
 
 3️⃣ **Add a .env file to the project base directory**
 
-````bash
+```bash
 # 1NowCaseStudy/.env
 SECRET_KEY=mysupersecretkey
 JWT_SECRET=mysupersecretjwtkey
@@ -150,7 +150,7 @@ DEBUG=True #must be a bool value: True or False
 ```bash
 python manage.py makemigrations
 python manage.py migrate
-````
+```
 
 5️⃣ **Run Dev Server**
 
