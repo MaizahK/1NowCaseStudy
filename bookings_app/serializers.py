@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.db.models import Q
 from .models import Booking
 
 class BookingSerializer(serializers.ModelSerializer):
@@ -17,9 +18,11 @@ class BookingSerializer(serializers.ModelSerializer):
         
         # prevent double bookings
         overlap = Booking.objects.filter(
-            vehicle=vehicle,
-            start_date__lt=end,
-            end_date__gt=start
+            vehicle=vehicle
+        ).filter(
+            ~(
+                Q(end_date__lt=start) | Q(start_date__gt=end)
+            )
         ).exists()
 
         if overlap:
