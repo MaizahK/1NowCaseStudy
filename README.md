@@ -142,7 +142,6 @@ pip install -r requirements.txt
 # 1NowCaseStudy/.env
 SECRET_KEY=mysupersecretkey
 JWT_SECRET=mysupersecretjwtkey
-DEBUG=True #must be a bool value: True or False
 ```
 
 4️⃣ **Apply Migrations**
@@ -193,7 +192,7 @@ The project contains **product_research.txt** that contains the product context 
 -   The project uses Django provided JWT Authentication which is required for all API calls except for User and Token creation and Swagger documentation.
 -   All application calls can only be accessed with an authorization token.
 -   Request data is serialized and validated with REST serializers, including custom validators and provides clear error message in case of request failure.
--   The project handles all errors gracefully, only providing error details if DEBUG is set to False in the .env file.
+-   The project handles all errors gracefully with accurate exception messages.
 -   API Documentation is provided through the **/swagger** endpoint.
 -   Unit tests are added to each module to test the happy flow and edge cases.
 -   The project has been uploaded as a public GitHub repository with a detailed **README.md**.

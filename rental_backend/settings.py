@@ -26,7 +26,7 @@ SECRET_KEY = config("SECRET_KEY")
 JWT_SECRET = config("JWT_SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG")
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
