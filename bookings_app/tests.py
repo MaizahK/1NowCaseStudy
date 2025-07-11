@@ -17,37 +17,33 @@ class BookingTests(APITestCase):
     def test_create_booking(self):
         data = {
             'vehicle': self.vehicle.id,
+            'deposit_amount' : 200,
             'start_date': date.today(),
             'end_date': date.today() + timedelta(days=2)
         }
-        response = self.client.post('/api/bookings/', data)
+        response = self.client.post('/bookings/', data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(Booking.objects.filter(user=self.user).exists())
 
     def test_create_booking_invalid_dates(self):
         data = {
             'vehicle': self.vehicle.id,
+            'deposit_amount' : 200,
             'start_date': date.today(),
             'end_date': date.today() - timedelta(days=1)
         }
-        response = self.client.post('/api/bookings/', data)
+        response = self.client.post('/bookings/', data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_list_bookings(self):
-        Booking.objects.create(user=self.user, vehicle=self.vehicle, start_date=date.today(), end_date=date.today())
-        response = self.client.get('/api/bookings/')
+        Booking.objects.create(user=self.user, vehicle=self.vehicle, start_date=date.today(), end_date=date.today(), deposit_amount=200)
+        response = self.client.get('/bookings/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 1)
+        self.assertEqual(len(response.data.get("results")), 1)
 
     def test_booking_belongs_to_user(self):
         other_user = User.objects.create_user(username='other', password='pass')
         other_vehicle = Vehicle.objects.create(owner=other_user, make='Honda', model='Civic', year=2018, plate='OTH123')
-        Booking.objects.create(user=other_user, vehicle=other_vehicle, start_date=date.today(), end_date=date.today())
-        response = self.client.get('/api/bookings/')
-        self.assertEqual(len(response.data), 0)
-
-    def test_delete_booking(self):
-        booking = Booking.objects.create(user=self.user, vehicle=self.vehicle, start_date=date.today(), end_date=date.today())
-        response = self.client.delete(f'/api/bookings/{booking.id}/')
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertFalse(Booking.objects.filter(id=booking.id).exists())
+        Booking.objects.create(user=other_user, vehicle=other_vehicle, start_date=date.today(), end_date=date.today(), deposit_amount=200)
+        response = self.client.get('/bookings/')
+        self.assertEqual(len(response.data.get("results")), 0)

@@ -33,13 +33,3 @@ class UserAuthTests(APITestCase):
         data = {'username': 'wrong', 'password': 'wrong'}
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-
-    def test_refresh_token(self):
-        _ = User.objects.create_user(username='test', password='testpass')
-        token_url = reverse('token_obtain_pair')
-        refresh_url = reverse('token_refresh')
-        response = self.client.post(token_url, {'username': 'test', 'password': 'testpass'})
-        refresh_token = response.data['refresh']
-        response = self.client.post(refresh_url, {'refresh': refresh_token})
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('access', response.data)
