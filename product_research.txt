@@ -1,0 +1,27 @@
+
+---
+
+What 1Now Does:
+
+1Now is a B2B service platform that allows vehicle rental business handle their operations.
+It provides them with custom built solutions, websites, payment integrations, insurances, metrics assessment, insights and every other service that a rental business would need in order to operate seamlessly.
+
+---
+
+Who It Serves:
+
+It serves rental companies by offering SaaS products taking control of and managing all of the technological aspects of the business.
+
+---
+
+How Your Backend Could Connect To The Frontend Of LahoreCareRental.com:
+
+This Django REST Framework backend application built as a sample project for a 1Now case study, can be integrated as a fully customizable and scalable backend solution for the frontend of any rental service, currently targeting LahoreCarRentals.com.
+It consists of three modules: users, vehicles and bookings; Users App handles the creation of a user and their respective JWT token to authorize all requests.
+Vehicles App handles the CRUD operations (the only operations specified in the requirements) for all the vehicles registered by the user.
+The Bookings App handles the bookings of the vehicles for a range of dates with built in logic to prevent any form of double bookings.
+
+The frontend developer will simply call the endpoints specified in the API documentation with the required attributes and the user token when needed and integrate it into their application by processing the JSON reponses provided.
+The backend is made intuitive for any experienced or non-experienced developer so that they can use it for their project without any invisible limitations present.
+
+---

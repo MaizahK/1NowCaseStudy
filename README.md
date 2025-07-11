@@ -136,20 +136,29 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-3️⃣ **Apply Migrations**
+3️⃣ **Add a .env file to the project base directory**
+
+````bash
+# 1NowCaseStudy/.env
+SECRET_KEY=mysupersecretkey
+JWT_SECRET=mysupersecretjwtkey
+DEBUG=True #must be a bool value: True or False
+```
+
+4️⃣ **Apply Migrations**
 
 ```bash
 python manage.py makemigrations
 python manage.py migrate
-```
+````
 
-4️⃣ **Run Dev Server**
+5️⃣ **Run Dev Server**
 
 ```bash
 python manage.py runserver
 ```
 
-5️⃣ **Create Admin**
+6️⃣ **Create Admin**
 
 ```bash
 python manage.py createsuperuser
@@ -168,6 +177,26 @@ python manage.py test
 ```
 
 There are **unit tests for all three modules** covering core features and edge cases.
+
+---
+
+## ✅ Product Research
+
+The project contains **product_research.txt** that contains the product context as was asked as an assignment requirement.
+
+---
+
+## ✅ Deliverables
+
+-   The project consists of three modular REST apps: User, Vehicles, Booking.
+-   All apps use APIViews from Django Rest Framework including builtin APIs with mixins and generics.
+-   The project uses Django provided JWT Authentication which is required for all API calls except for User and Token creation and Swagger documentation.
+-   All application calls can only be accessed with an authorization token.
+-   Request data is serialized and validated with REST serializers, including custom validators and provides clear error message in case of request failure.
+-   The project handles all errors gracefully, only providing error details if DEBUG is set to False in the .env file.
+-   API Documentation is provided through the **/swagger** endpoint.
+-   Unit tests are added to each module to test the happy flow and edge cases.
+-   The project has been uploaded as a public GitHub repository with a detailed **README.md**.
 
 ---
 
