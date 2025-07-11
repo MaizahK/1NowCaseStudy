@@ -8,6 +8,14 @@ Users can **register**, **login**, **manage vehicles**, and **create/view bookin
 
 ## ✅ Features
 
+### 📝 API Documentation
+
+| Endpoint   | Method | Description                                                     |
+| ---------- | ------ | --------------------------------------------------------------- |
+| `/swagger` | GET    | UI based auto-generated documentation for all project endpoints |
+
+---
+
 ### 📌 Authentication
 
 | Endpoint    | Method | Description                   |
